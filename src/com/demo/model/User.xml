@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.dao.inter.IUserOperation">
+	<select id="selectUserByName" parameterType="String" resultType="User">
+		select * from `t_user` where username = #{username}
+	</select>
+
+	<!-- 返回list 的select 语句，注意 resultMap 的值是指向前面定义好的 -->
+	<select id="selectUsers" parameterType="string" resultMap="resultListUser">
+		select * from t_user where username like #{username}
+	</select>
+	
+	<!-- 为了返回list 类型而定义的returnMap -->
+	<resultMap type="User" id="resultListUser">
+		<result column="username" property="username" />
+		<result column="userpass" property="userpass" />
+	</resultMap>
+
+	<insert id="addUser" parameterType="User"
+		keyProperty="username">
+		insert into t_user(username,userpass)
+		values(#{username},#{userpass})
+	</insert>
+
+	<update id="updateUser" parameterType="User">
+		update t_user set userpass=#{userpass}
+		where username=#{username}
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+        delete from t_user where username=#{username}
+    </delete>
+</mapper>
