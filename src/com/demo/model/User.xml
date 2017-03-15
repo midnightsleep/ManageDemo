@@ -8,6 +8,11 @@
 	</select>
 
 	<!-- 返回list 的select 语句，注意 resultMap 的值是指向前面定义好的 -->
+	<select id="selectUsersByPage" parameterType="Map" resultMap="resultListUser">
+		select * from t_user limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+	</select>
+	
+	<!-- 返回list 的select 语句，注意 resultMap 的值是指向前面定义好的 -->
 	<select id="selectUsers" parameterType="string" resultMap="resultListUser">
 		select * from t_user where username like #{username}
 	</select>

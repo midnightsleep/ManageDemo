@@ -24,20 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </head>
 <body class="easyui-layout">
-	<div data-options="region:'north',border:false" style="height:68px">
-		<jsp:include page="top.jsp" flush="true"/> 
+	<div data-options="region:'north',border:false" style="height:68px;">
+		
 	</div>
-	<!-- <div data-options="region:'west',split:true,title:'导航'" style="width:15%;">
-		<iframe id="iframe" name="iframe" src="/ManageDemo/left" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
-	</div>
-	<div data-options="region:'center',title:'Center'">
-		<iframe id="iframe" name="iframe" src="/ManageDemo/main" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
-	</div> -->
-	
-
-	<div data-options="region:'center',title:'Center'">
-		<jsp:include page="easyUI.jsp" flush="true"/> 
-	</div>
+	<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">west content</div>
+	<div data-options="region:'center',title:'Center'"></div>
 </body>
 
 </html>

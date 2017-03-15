@@ -1,5 +1,7 @@
 package com.demo.controller;
 
+import java.util.HashMap;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,12 @@ public class MyController {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping("/index2")
+	public String index2() {
+		return "index2";
+	}
+
 
 	@RequestMapping("/login")
 	public String login() {
@@ -26,11 +34,25 @@ public class MyController {
 		return "top";
 	}
 	
+	@RequestMapping("/main")
+	public String main() {
+		return "main";
+	}
+	
+	@RequestMapping("/person")
+	public String person(String name,Model model) {
+		model.addAttribute("nname", name);
+		System.out.println(name);
+		return "person";
+	}
+	
 	@RequestMapping("/users")
 	@ResponseBody
-	public String users() {
-		
-		return "{\"rows\": "+UserDao.getUserList().toJSONString()+",\"totals\": 92}";
+	public String users(int page,int rows) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+ 		map.put("start", (page-1)*rows);
+		map.put("size", rows);
+		return "{\"rows\": "+UserDao.getUserList(map).toJSONString()+",\"total\": 92}";
 	}
 	
 	@RequestMapping("/loans")

@@ -16,15 +16,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	
+	<script type="text/javascript" src="static/jquery.min.js"></script>
+	<script type="text/javascript" src="static/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="static/themes/icon.css">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	
   </head>
   
   <body>
     <div id="tt" class="easyui-tabs white_content" data-options="fit:true">
-    <a href="javascript:void(0)" onclick="document.getElementById('tt').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
     <div title="详情">
 
         <form id="FF">
@@ -36,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <tr>
                             <td width="120" align="right"><span class="Red"></span> 昵称</td>
                             <td id="nickName">
-                                心在跳
+                               ${nname}
                             </td>
 
                             <td width="120" align="right"><span class="Red"></span> 申请人名称</td>

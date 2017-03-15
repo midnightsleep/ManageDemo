@@ -1,5 +1,6 @@
 package com.demo.dao.inter;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.demo.model.User;
@@ -16,6 +17,7 @@ public interface IUserOperation {
 	 */
 	public User selectUserByName(String name);
 	public List<User> selectUsers(String userName);
+	public List<User> selectUsersByPage(HashMap<String, Integer> map);
 	public boolean addUser(User user);
 	/**
 	 * 

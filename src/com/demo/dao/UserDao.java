@@ -1,8 +1,10 @@
 package com.demo.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -69,8 +71,9 @@ public class UserDao {
 	 * @return: JSONArray   
 	 * @throws
 	 */
-	public static JSONArray getUserList(){
-		List<User> list = userOperation.selectUsers("%");
+	public static JSONArray getUserList(HashMap<String, Integer> map){
+		
+		List<User> list = userOperation.selectUsersByPage(map);
 		JSONArray js = new JSONArray();
 		for (int i = 0; i < list.size(); i++) {
 			js.add(JSON.toJSON(list.get(i)));
@@ -96,7 +99,10 @@ public class UserDao {
 	}
 
  	public static void main(String[] args) {
- 		System.out.println(getLoanList().toJSONString());
+ 		HashMap<String, Integer> map = new HashMap<String, Integer>();
+ 		map.put("start", 0);
+		map.put("size", 10);
+ 		System.out.println(getUserList(map).toJSONString());
 		
 	}
 }
